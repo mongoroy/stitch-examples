@@ -30,7 +30,7 @@
                     "otherFields": {},
                     "read": {},
                     "valid": {},
-                    "write": {},
+                    "write": {}
                 }
             },
             "type": "mongodb"
