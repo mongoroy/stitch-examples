@@ -16,11 +16,11 @@ function createAssetInformation({ isVideo }) {
 }
 
 export default (async function uploadAsset(
-  { localPath, baasClient, isVideo = false },
+  { localPath, stitchClient, isVideo = false },
 ) {
   const { fileName, contentType } = createAssetInformation({ isVideo });
 
-  const signPolicyResponse = await baasClient.executePipeline([
+  const signPolicyResponse = await stitchClient.executePipeline([
     {
       service: 's31',
       action: 'signPolicy',

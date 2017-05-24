@@ -1,13 +1,13 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {BaasClient} from 'baas';
+import {StitchClient} from 'stitch';
 
-// These settings should match the ones you've configured in the BaaS admin app.
+// These settings should match the ones you've configured in the Stitch admin app.
 const APP_ID = "helloworld-fgyjb"
 const MONGO_SERVICE_NAME = "mongodb1"
 const DB_NAME = "app-fgyjb"
 const ITEMS_COLLECTION = "items"
-const client = new BaasClient(APP_ID)
+const client = new StitchClient(APP_ID)
 
 const HelloWorld = class extends React.Component {
 

@@ -1,11 +1,11 @@
 const APP_ID = 'snapdemo-olnby'
-export default class BaaSService {
-  static async create({ BaasClient }) {
-    const baasClient = new BaasClient(APP_ID);
-    const mongoClient = baasClient.service('mongodb', 'mongodb1');
+export default class StitchService {
+  static async create({ StitchClient }) {
+    const stitchClient = new StitchClient(APP_ID);
+    const mongoClient = stitchClient.service('mongodb', 'mongodb1');
 
-    const instance = new BaaSService();
-    instance.baasClient = baasClient;
+    const instance = new StitchService();
+    instance.stitchClient = stitchClient;
     instance.mongoClient = mongoClient;
 
     await instance.createViewer();
@@ -14,11 +14,11 @@ export default class BaaSService {
   }
 
   createViewer() {
-    this.viewer = this.baasClient.auth();
+    this.viewer = this.stitchClient.auth();
     if (!this.viewer) {
-      return this.baasClient.authManager.anonymousAuth().then(
+      return this.stitchClient.authManager.anonymousAuth().then(
         ()=> {
-          this.viewer = this.baasClient.auth();
+          this.viewer = this.stitchClient.auth();
         }
       );
     }

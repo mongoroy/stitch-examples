@@ -1,4 +1,4 @@
-package com.mongodb.baas.examples.mongorestaurant;
+package com.mongodb.stitch.examples.mongorestaurant;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

@@ -10,7 +10,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'APP_ID': JSON.stringify(process.env.APP_ID),
-        'BAAS_URL': JSON.stringify(process.env.BAAS_URL)
+        'STITCH_URL': JSON.stringify(process.env.STITCH_URL)
       }
     })
   ],

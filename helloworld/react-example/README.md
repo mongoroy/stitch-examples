@@ -21,16 +21,16 @@ setup. Otherwise, follow the instructions for at least one of the providers list
 5. Under "Valid OAuth redirect URIs" add the following entry:
 	`https://baas-dev.10gen.cc/api/client/v1.0/auth/callback`
 
-Return back to the BaaS authentication settings page, and enter your App ID and App Secret as client ID and client secret respectively from the Facebook app dashboard. Add `http://localhost:8000/` to the list of redirect URIs, and save it.
+Return back to the Stitch authentication settings page, and enter your App ID and App Secret as client ID and client secret respectively from the Facebook app dashboard. Add `http://localhost:8000/` to the list of redirect URIs, and save it.
 
 ##### Google
 1. Get your client ID and client secret (See: [Google - Setting up OAuth 2.0](https://support.google.com/cloud/answer/6158849?hl=en))
 2. Click the edit button for your credentials on the Google API Manager.
 3. For Authorized redirect URIs, add the following entry:
 	`https://baas-dev.10gen.cc/api/client/v1.0/auth/callback`
-4. On the BaaS admin site
+4. On the Stitch admin site
 
-Return back to the BaaS authentication settings page, and enter your client ID and client Secret in the Google auth settings panel. Add `http://localhost:8000/` to the list of redirect URIs, and save it.
+Return back to the Stitch authentication settings page, and enter your client ID and client Secret in the Google auth settings panel. Add `http://localhost:8000/` to the list of redirect URIs, and save it.
 
 ### Set up a MongoDB service
 

@@ -3,7 +3,7 @@ import uploadAsset from './uploadAsset';
 import FeedItem from './FeedItem';
 
 export default class Uploader {
-  baas;
+  stitch;
 
   @observable localAsset;
   @observable uploading = false;
@@ -43,7 +43,7 @@ export default class Uploader {
     let remoteUrl;
     try {
       remoteUrl = await uploadAsset({
-        baasClient: this.baas.baasClient,
+        stitchClient: this.stitch.stitchClient,
         localPath: path,
         isVideo,
       });
@@ -52,7 +52,7 @@ export default class Uploader {
       throw e;
     }
 
-    const feedItem = FeedItem.createLocal({ path, isVideo, baas: this.baas });
+    const feedItem = FeedItem.createLocal({ path, isVideo, stitch: this.stitch });
 
     feedItem.media.url = decodeURIComponent(remoteUrl);
 
@@ -62,7 +62,7 @@ export default class Uploader {
       owner_id: '$$user.id',
     };
 
-    const db = this.baas.getDb();
+    const db = this.stitch.getDb();
 
     let response;
     try {
@@ -72,7 +72,7 @@ export default class Uploader {
       throw e;
     }
 
-    feedItem.ownerId = this.baas.baasClient.auth()._id
+    feedItem.ownerId = this.stitch.stitchClient.auth()._id
 
     this.clearLocalAsset();
     this.uploading = false;

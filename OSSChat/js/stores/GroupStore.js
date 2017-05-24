@@ -14,7 +14,7 @@ class Group {
 }
 
 export default class GroupStore {
-  baas;
+  stitch;
 
   @observable loading = false;
   @observable groups = [];
@@ -22,7 +22,7 @@ export default class GroupStore {
 
   @action.bound async load() {
     this.loading = true;
-    const db = this.baas.getDb();
+    const db = this.stitch.getDb();
     const response = await db.collection('items').find();
     this.feedItems = response.map(FeedItem.createFromDb);
 
@@ -32,7 +32,7 @@ export default class GroupStore {
   }
 
   async loadGroups() {
-    const db = this.baas.getDb();
+    const db = this.stitch.getDb();
     const groupsResponse = await db.collection('groups').find();
     const groupInstanceArray = groupsResponse.map(Group.createFromDb);
 
@@ -49,7 +49,7 @@ export default class GroupStore {
   }
 
   @action async createGroup({ name }) {
-    const db = this.baas.getDb();
+    const db = this.stitch.getDb();
 
     const doc = {
       name,

@@ -5,12 +5,12 @@ import { Provider } from 'mobx-react';
 import './index.css';
 import Stores from '../../js/stores';
 import {
-  BaasClient,
-} from 'baas';
+  StitchClient,
+} from 'stitch';
 import App from './App';
 
 const storesInstance = new Stores();
-storesInstance.initialize({ BaasClient });
+storesInstance.initialize({ StitchClient });
 window.stores = storesInstance;
 
 const Root = () => (

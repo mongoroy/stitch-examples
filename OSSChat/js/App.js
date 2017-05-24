@@ -11,7 +11,7 @@ import CameraScreen from './CameraScreen';
 import GroupListScreen from './GroupListScreen';
 import CreateFeedItemFlow from './CreateFeedItem/CreateFeedItemFlow';
 import Stores from './stores/index-native';
-import { BaasClient } from 'baas'
+import { StitchClient } from 'stitch'
 
 const storesInstance = new Stores();
 
@@ -19,7 +19,7 @@ const storesInstance = new Stores();
 @observer
 class App extends Component {
   componentDidMount() {
-    storesInstance.initialize({ BaasClient });
+    storesInstance.initialize({ StitchClient });
   }
 
   render() {

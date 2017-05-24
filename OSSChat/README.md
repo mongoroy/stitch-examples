@@ -1,6 +1,6 @@
 # OSSChat (Open Source SnapChat)
 
-This example will show you how to create a SnapChat like app in react native using BaaS. Before you get started, you should create an API key in AWS that will let you put to a bucket of your choice (s3:PutObject and s3:PutObjectAcl). Make sure the bucket is created.
+This example will show you how to create a SnapChat like app in react native using Stitch. Before you get started, you should create an API key in AWS that will let you put to a bucket of your choice (s3:PutObject and s3:PutObjectAcl). Make sure the bucket is created.
 
 ## Setup
 
@@ -13,7 +13,7 @@ This example will show you how to create a SnapChat like app in react native usi
 1. Go to your profile settings by clicking your name in the top right.
 2. Create an API Key in your profile settings and keep note of the secret key.
 
-### Download the BaaS CLI
+### Download the Stitch CLI
 1. Go to your profile settings by clicking your name in the top right.
 2. Download the CLI that matches your platform.
 3. Make sure the CLI is executable.
@@ -29,7 +29,7 @@ This example will show you how to create a SnapChat like app in react native usi
 	./cli app-replace --appId=<appId> app_config.json --api-key=<apiKey>
 	```
 
-5. Change `APP_ID` in js/stores/BaaSService.js to be the app ID of your app.
+5. Change `APP_ID` in js/stores/StitchService.js to be the app ID of your app.
 6. Change `BucketName` in js/stores/uploadAsset.js to be a bucket that your AWS account owns.
 
 ### Run the app

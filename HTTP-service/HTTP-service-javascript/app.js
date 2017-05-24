@@ -2,13 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     'use strict'
 
-    // Replace BAAS-APP-ID with your Application ID
-    const baasClient = new baas.BaasClient("BAAS-APP-ID");
+    // Replace STITCH-APP-ID with your Application ID
+    const stitchClient = new stitch.StitchClient("STITCH-APP-ID");
     const sendButton = document.getElementById('sendButton');
 
     // allow anonymous user access for this app
     function doAnonymousAuth() {
-      baasClient.authManager.anonymousAuth()
+      stitchClient.authManager.anonymousAuth()
         .then( result => {
           console.log("authenticated");
         }).catch( err => {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // check to make sure there's a To: address
       if (toEmail != "") {
 
-        baasClient.executePipeline([
+        stitchClient.executePipeline([
           {
             // "http1" is the name of our HTTP service
             service:"http1",

@@ -14,7 +14,7 @@ This app demonstrates how to build a web application that serves a single user w
 1. Go to your profile settings by clicking your name in the top right.
 2. Create an API Key in your profile settings and keep note of the secret key.
 
-### Download the BaaS CLI
+### Download the Stitch CLI
 1. Go to your profile settings by clicking your name in the top right.
 2. Download the CLI that matches your platform.
 3. Make sure the CLI is executable.
@@ -22,8 +22,8 @@ This app demonstrates how to build a web application that serves a single user w
 
 ### Configure your app_config.json
 1. Modify the clientId/clientSecret for either or both Google and Facebook auth providers.
-	1. See: [Setting up Google OAuth 2 Provider](https://docs-mongodb-org-staging.s3.amazonaws.com/baas/draft-wip/authentication.html#google-authentication)
-	2. See: [Setting up Facebook OAuth 2 Provider](https://docs-mongodb-org-staging.s3.amazonaws.com/baas/draft-wip/authentication.html#facebook-authentication)
+	1. See: [Setting up Google OAuth 2 Provider](https://docs-mongodb-org-staging.s3.amazonaws.com/stitch/draft-wip/authentication.html#google-authentication)
+	2. See: [Setting up Facebook OAuth 2 Provider](https://docs-mongodb-org-staging.s3.amazonaws.com/stitch/draft-wip/authentication.html#facebook-authentication)
 2. Modify the `mongodb1` URI to your MongoDB cluster found by clicking connect on your cluster in Atlas.
 3. Import the app by running
 

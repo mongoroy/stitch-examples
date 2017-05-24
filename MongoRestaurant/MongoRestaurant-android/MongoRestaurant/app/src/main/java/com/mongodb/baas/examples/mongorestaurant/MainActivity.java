@@ -1,4 +1,4 @@
-package com.mongodb.baas.examples.mongorestaurant;
+package com.mongodb.stitch.examples.mongorestaurant;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,11 +17,11 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import com.mongodb.baas.android.BaasClient;
-import com.mongodb.baas.android.auth.Auth;
-import com.mongodb.baas.android.auth.AvailableAuthProviders;
-import com.mongodb.baas.android.auth.anonymous.AnonymousAuthProvider;
-import com.mongodb.baas.android.services.mongodb.MongoClient;
+import com.mongodb.stitch.android.StitchClient;
+import com.mongodb.stitch.android.auth.Auth;
+import com.mongodb.stitch.android.auth.AvailableAuthProviders;
+import com.mongodb.stitch.android.auth.anonymous.AnonymousAuthProvider;
+import com.mongodb.stitch.android.services.mongodb.MongoClient;
 
 import org.bson.Document;
 
@@ -30,13 +30,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Remember to replace the APP_ID with your BaaS Application ID
+    // Remember to replace the APP_ID with your Stitch Application ID
 
-    private static final String APP_ID = "BAAS-APP-ID"; //The BaaS Application ID
-    private static final String TAG = "BAAS-SDK";
+    private static final String APP_ID = "STITCH-APP-ID"; //The Stitch Application ID
+    private static final String TAG = "STITCH-SDK";
     private static final String MONGODB_SERVICE_NAME = "MONGODB-SERVICE-NAME";
 
-    private BaasClient _client;
+    private StitchClient _client;
     private MongoClient _mongoClient;
 
     private String currentRestaurantName;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        _client = new BaasClient(this.getBaseContext(), APP_ID);
+        _client = new StitchClient(this.getBaseContext(), APP_ID);
         _mongoClient = new MongoClient(_client, MONGODB_SERVICE_NAME);
 
         currentRestaurantName = "";

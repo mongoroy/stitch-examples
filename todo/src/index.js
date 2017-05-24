@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BaasClient } from 'baas';
+import { StitchClient } from 'stitch';
 import { browserHistory, Route } from 'react-router'
 import { BrowserRouter, Link } from 'react-router-dom'
 
@@ -12,12 +12,12 @@ if (process.env.APP_ID) {
 }
 
 let options = {};
-if (process.env.BAAS_URL) {
-  options.baseUrl = process.env.BAAS_URL;
+if (process.env.STITCH_URL) {
+  options.baseUrl = process.env.STITCH_URL;
 }
 
-let baasClient = new BaasClient(appId, options);
-let db = baasClient.service("mongodb", "mongodb1").db("todo")
+let stitchClient = new StitchClient(appId, options);
+let db = stitchClient.service("mongodb", "mongodb1").db("todo")
 let items = db.collection("items")
 let users = db.collection("users")
 let TodoItem = class extends React.Component {
@@ -61,8 +61,8 @@ var AuthControls = class extends React.Component {
     let authed = this.props.client.auth() != null
     let logout = () => this.props.client.logout().then(() => location.reload());
     let userData = null
-    if(baasClient.auth() && baasClient.auth().user){
-      userData = baasClient.auth().user.data
+    if(stitchClient.auth() && stitchClient.auth().user){
+      userData = stitchClient.auth().user.data
     }
     return (
       <div>
@@ -117,7 +117,7 @@ var AuthControls = class extends React.Component {
 var TodoList = class extends React.Component {
 
   loadList() {
-    let authed = baasClient.auth() != null
+    let authed = stitchClient.auth() != null
     if(!authed){
       return
     }
@@ -154,7 +154,7 @@ var TodoList = class extends React.Component {
       return
     }
     this.setState({requestPending:true})
-    items.insert([{text:event.target.value, "owner_id": baasClient.authedId()}]).then(
+    items.insert([{text:event.target.value, "owner_id": stitchClient.authedId()}]).then(
       () => {
         this._newitem.value = ""
         this.loadList();
@@ -193,15 +193,15 @@ var TodoList = class extends React.Component {
         }
         </ul>
       </div>);
-    return baasClient.auth() == null ? null : loggedInResult;
+    return stitchClient.auth() == null ? null : loggedInResult;
   }
 }
 
 var Home = function(){
-  let authed = baasClient.auth() != null
+  let authed = stitchClient.auth() != null
   return (
     <div>
-      <AuthControls client={baasClient}/>
+      <AuthControls client={stitchClient}/>
       <TodoList/>
     </div>
   )
@@ -209,7 +209,7 @@ var Home = function(){
 
 function initUserInfo(){
   users.updateOne(
-    {'_id': baasClient.authedId()},
+    {'_id': stitchClient.authedId()},
     {$setOnInsert:{"phone_number":"", "number_status":"unverified"}},
     {upsert: true}
   ).then(function(){});
@@ -220,7 +220,7 @@ var AwaitVerifyCode = class extends React.Component {
     let obj = this
     if(e.keyCode == 13){
       users.updateOne(
-        {_id:baasClient.authedId(), verify_code:this._code.value},
+        {_id:stitchClient.authedId(), verify_code:this._code.value},
         {"$set":{"number_status":"verified"}}).then(
           (data)=>{ obj.props.onSubmit() }
         )
@@ -257,7 +257,7 @@ var NumberConfirm = class extends React.Component {
       if(formatPhoneNum(this._number.value).length == 10){
         // TODO: generate this code on the server-side.
         let code = generateCode(7)
-        baasClient.executePipeline([
+        stitchClient.executePipeline([
           {action:"literal", args:{items:[{name:"hi"}]}},
           {
             service:"tw1", action:"send", 
@@ -269,7 +269,7 @@ var NumberConfirm = class extends React.Component {
           }]).then(
           (data)=>{
             users.updateOne(
-              {"_id": baasClient.authedId(), "number_status":"unverified"},
+              {"_id": stitchClient.authedId(), "number_status":"unverified"},
               {$set:{
                 "phone_number":"+1" + this._number.value,
                 "number_status":"pending",

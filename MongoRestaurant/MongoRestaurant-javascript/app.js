@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded',() => {
     
     'use strict'
     
-    // Replace the BAAS-APP-ID with your BaaS Application ID
-    // Replace the MONGODB-SERVICE-NAME with the name of the BaaS MongoDB Service
-    const baasClient = new baas.BaasClient("rest1-vvoul");
-    const mongoClient = baasClient.service("mongodb", "mongodb1");
+    // Replace the STITCH-APP-ID with your Stitch Application ID
+    // Replace the MONGODB-SERVICE-NAME with the name of the Stitch MongoDB Service
+    const stitchClient = new stitch.StitchClient("rest1-vvoul");
+    const mongoClient = stitchClient.service("mongodb", "mongodb1");
     
     const db = mongoClient.db("guidebook");
     const coll = db.collection("restaurants");
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded',() => {
     var restaurantName = ""
     
     function doAnonymousAuth(){
-        baasClient.authManager.anonymousAuth().then( result => {
+        stitchClient.authManager.anonymousAuth().then( result => {
             console.log("authenticated");
             
         }).catch( err => {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded',() => {
                 "$push" : {
                     "comments" : {
                         "comment" : comment, 
-                        "user_id" : baasClient.authedId()
+                        "user_id" : stitchClient.authedId()
                     }
                 }
             }

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.mongodb.baas.examples.mongorestaurant"
+        applicationId "com.mongodb.stitch.examples.mongorestaurant"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -28,14 +28,14 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.1'
     testCompile 'junit:junit:4.12'
 
-    compile('com.mongodb.baas:android-sdk:0.1.2-SNAPSHOT'){
+    compile('com.mongodb.stitch:android-sdk:0.1.2-SNAPSHOT'){
         changing = true
     }
 }
 
 repositories {
     maven {
-        url "https://s3.amazonaws.com/baas-sdks/android/maven/snapshots"
+        url "https://s3.amazonaws.com/stitch-sdks/android/maven/snapshots"
     }
 
     // TODO: Remove once BSON 3.5.0 is released
