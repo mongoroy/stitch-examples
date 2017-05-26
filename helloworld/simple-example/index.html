@@ -48,7 +48,7 @@
               }
           });
         $("#save").click(function(){
-          db.collection("items").updateOne({owner_id: stitchClient.authedId()}, {$set:{"note":$("#note").val()}}, {upsert: true});
+          db.collection("items").updateOne({owner_id: stitchClient.authedId()}, {$set:{"note":$("#note").val()}}, {upsert: true}).catch(console.error);
         })
         return;
       }
