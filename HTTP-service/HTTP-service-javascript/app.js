@@ -32,16 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
             service:"http1",
             action:"post",
             let: {
-              "sgUrl": "$$values.sg-url",
+              "sgUrl": "%%values.sg-url",
               "auth": {
-                "$concat": ["Bearer ", "$$values.sg-api-key"]
+                "%concat": ["Bearer ", "%%values.sg-api-key"]
               },
-              "myEmail" : "$$values.my-email-address"
+              "myEmail" : "%%values.my-email-address"
             },
             args: {
-              "url": "$$vars.sgUrl",
+              "url": "%%vars.sgUrl",
               "headers": {
-                "Authorization": [ "$$vars.auth" ],
+                "Authorization": [ "%%vars.auth" ],
                 "Content-Type": [ "application/json" ]
               },
               "body": {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   }
                 ],
                 "from": {
-                  "email": "$$vars.myEmail"
+                  "email": "%%vars.myEmail"
                 },
                 "subject": subject,
                 "content": [

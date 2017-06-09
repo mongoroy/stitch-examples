@@ -35,43 +35,43 @@
             "_id": {},
             "checked": {
               "valid": {
-                "$or": [
+                "%or": [
                   {
-                    "$$this": {
-                      "$type": "bool"
+                    "%%this": {
+                      "%type": "bool"
                     }
                   },
                   {
-                    "$$this": {
-                      "$exists": false
+                    "%%this": {
+                      "%exists": false
                     }
                   }
                 ]
               }
             },
             "owner_id": {
-              "valid": "$$user.id"
+              "valid": "%%user.id"
             },
             "text": {
               "valid": {
-                "$$this": {
-                  "$ne": ""
+                "%%this": {
+                  "%ne": ""
                 }
               }
             }
           },
           "namespace": "todo.items",
           "read": {
-            "$$root.owner_id": "$$user.id"
+            "%%root.owner_id": "%%user.id"
           },
           "write": {
-            "$or": [
+            "%or": [
               {
-                "$$prevRoot.owner_id": "$$user.id"
+                "%%prevRoot.owner_id": "%%user.id"
               },
               {
-                "$$prevRoot": {
-                  "$exists": 0
+                "%%prevRoot": {
+                  "%exists": 0
                 }
               }
             ]
@@ -81,12 +81,12 @@
           "_id": "5888d4c3772e2e4a41158d6b",
           "fields": {
             "_id": {
-              "valid": "$$user.id"
+              "valid": "%%user.id"
             },
             "number_status": {
               "valid": {
-                "$$this": {
-                  "$in": [
+                "%%this": {
+                  "%in": [
                     "pending",
                     "unverified",
                     "verified"
@@ -96,22 +96,22 @@
             },
             "phone_number": {
               "valid": {
-                "$$this": {
-                  "$type": "string"
+                "%%this": {
+                  "%type": "string"
                 },
-                "$or": [
+                "%or": [
                   {
-                    "$$this": {
-                      "$eq": ""
+                    "%%this": {
+                      "%eq": ""
                     },
-                    "$$root.number_status": "unverified"
+                    "%%root.number_status": "unverified"
                   },
                   {
-                    "$$this": {
-                      "$ne": ""
+                    "%%this": {
+                      "%ne": ""
                     },
-                    "$$root.number_status": {
-                      "$in": [
+                    "%%root.number_status": {
+                      "%in": [
                         "pending",
                         "verified"
                       ]
@@ -122,18 +122,18 @@
             },
             "verify_code": {
               "valid": {
-                "$or": [
+                "%or": [
                   {
-                    "$$root.number_status": {
-                      "$in": [
+                    "%%root.number_status": {
+                      "%in": [
                         "pending",
                         "verified"
                       ]
                     }
                   },
                   {
-                    "$$this": {
-                      "$exists": false
+                    "%%this": {
+                      "%exists": false
                     }
                   }
                 ]
@@ -142,16 +142,16 @@
           },
           "namespace": "todo.users",
           "read": {
-            "$$root._id": "$$user.id"
+            "%%root._id": "%%user.id"
           },
           "write": {
-            "$or": [
+            "%or": [
               {
-                "$$prevRoot._id": "$$user.id"
+                "%%prevRoot._id": "%%user.id"
               },
               {
-                "$$prevRoot": {
-                  "$exists": 0
+                "%%prevRoot": {
+                  "%exists": 0
                 }
               }
             ]
@@ -182,17 +182,17 @@
               "action": "expr",
               "args": {
                 "expression": {
-                  "text": "$$vars.text",
-                  "owner_id": "$$vars.ownerId._id"
+                  "text": "%%vars.text",
+                  "owner_id": "%%vars.ownerId._id"
                 }
               },
               "let": {
-                "text": "$$args.Body",
+                "text": "%%args.Body",
                 "ownerId": {
-                  "$pipeline": {
+                  "%pipeline": {
                     "name": "idFromPhone",
                     "args": {
-                      "phoneNumber": "$$args.From"
+                      "phoneNumber": "%%args.From"
                     }
                   }
                 }
@@ -222,11 +222,11 @@
             "collection": "users",
             "database": "todo",
             "query": {
-              "phone_number": "$$vars.phoneNumber"
+              "phone_number": "%%vars.phoneNumber"
             }
           },
           "let": {
-            "phoneNumber": "$$args.phoneNumber"
+            "phoneNumber": "%%args.phoneNumber"
           },
           "service": "mongodb1"
         }
@@ -239,7 +239,7 @@
       ],
       "skipRules": true,
       "canEvaluate": {
-        "$$true": true
+        "%%true": true
       },
       "private": true
     }

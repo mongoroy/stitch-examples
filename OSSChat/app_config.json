@@ -18,7 +18,7 @@
                     "read": {},
                     "valid": {},
                     "write": {
-                        "$$root.owner_id": "$$user.id"
+                        "%%root.owner_id": "%%user.id"
                     }
                 },
                 "5888d4c3772e2e4a41158d6b": {
@@ -48,8 +48,8 @@
                         "signPolicy"
                     ],
                     "when": {
-                        "$$args.bucket": {
-                            "$in": "$$values.buckets"
+                        "%%args.bucket": {
+                            "%in": "%%values.buckets"
                         }
                     }
                 }

@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         args.put("key",key);
         pipe.put("args",args);
 
-        cipher.put("$pipeline",pipe);
+        cipher.put("%pipeline",pipe);
         expression.put("expression", cipher);
 
         final PipelineStage pipeline = new PipelineStage(STITCH_SERVICE_ACTION, expression);

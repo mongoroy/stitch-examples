@@ -59,7 +59,7 @@ export default class Uploader {
     const insertData = {
       ...feedItem.toJSON(),
       groups: groups.keys(),
-      owner_id: '$$user.id',
+      owner_id: '%%user.id',
     };
 
     const db = this.stitch.getDb();

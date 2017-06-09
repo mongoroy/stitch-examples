@@ -263,7 +263,7 @@ var NumberConfirm = class extends React.Component {
             service:"tw1", action:"send", 
             args: {
               "to":"+1" + this._number.value,
-              "from":"$$values.ourNumber",
+              "from":"%%values.ourNumber",
               "body": "Your confirmation code is "+ code
             }
           }]).then(
